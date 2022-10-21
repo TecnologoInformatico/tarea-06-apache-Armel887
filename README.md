@@ -26,4 +26,40 @@ repositorio: `https://github.com/TecnologoInformatico/AdmInf-web.git`
     "serverName": "",
     "ip": ""
 }
+
+
 ```
+
+1 -  mkdir repositorios
+     git clone `https://github.com/TecnologoInformatico/AdmInf-web.git`
+
+2 - sudo apt update
+
+3 - sudo apt install apache2
+
+4 - sudo mkdir var/www/agonzalez
+
+5 - sudo chown ubuntu:ubuntu /var/www/agonzalez
+
+6 - cd /etc/apache2/sites-available/
+    sudo cp 000-default.conf a.gonzalez.conf
+    sudo nano agonzalez.conf
+
+7 - cd /etc/
+    sudo nano hosts(cambio localhost poner ip 129.148.28.149
+    y en la ultima linea 127.0.0.1 agonzalez.tecnologoinformatico.com)
+
+8 - ubuntu@instance-20220927-2201:~$ sudo systemctl reload apache2
+    ubuntu@instance-20220927-2201:~$ sudo netfilter-persistent save
+    run-parts: executing /usr/share/netfilter-persistent/plugins.d/15-ip4tables save
+    run-parts: executing /usr/share/netfilter-persistent/plugins.d/25-ip6tables save
+
+9 - ubuntu@instance-20220927-2201:~$ cp -r ~/repositorios/AdmInf-web/* /var/www/agonzalez
+     
+10 - ubuntu@instance-20220927-2201:~$ sudo a2ensite a.gonzalez.conf
+     Enabling site a.gonzalez.
+     To activate the new configuration, you need to run:
+     systemctl reload apache2
+
+11 - ubuntu@instance-20220927-2201:~$ { "serverName": "agonzalez.tecnologoinformatico",; "ip": "129.148.28.149" }
+
